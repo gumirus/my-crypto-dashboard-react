@@ -345,3 +345,89 @@ header h1 {
   min-width: 48px;
   margin-right: 4px;
 }
+
+@media (max-width: 700px) {
+  .container {
+    padding: 0.5rem;
+  }
+  .main-content {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .main-left, .orderbook-sidebar {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    margin: 0;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    box-sizing: border-box;
+  }
+  .chart, .news, .bull-bear-power, .orderbook {
+    padding: 1rem 0.5rem;
+    font-size: 0.98rem;
+  }
+  .market {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: stretch;
+  }
+  .coin {
+    width: 100%;
+    min-width: 0;
+    padding: 0.5rem;
+    font-size: 0.98rem;
+  }
+  .lightchart-container {
+    min-width: 0;
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+    height: 220px;
+  }
+  .orderbook-sidebar {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+  }
+  .orderbook .orderbook-books {
+    gap: 0.5rem;
+  }
+  .orderbook h3, .bull-bear-power h2, .news h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  .bull-bear-power {
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+    padding: 1rem 0.5rem;
+  }
+  .bull-bear-power > div {
+    font-size: 1rem;
+  }
+  .timeframes-scroll button {
+    min-width: 38px;
+    font-size: 0.95rem;
+    padding: 0.3rem 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0.2rem;
+  }
+  .chart, .news, .bull-bear-power, .orderbook {
+    padding: 0.5rem 0.2rem;
+    font-size: 0.95rem;
+  }
+  .lightchart-container {
+    height: 140px;
+  }
+  .coin img {
+    width: 28px;
+    height: 28px;
+  }
+  .orderbook h3, .bull-bear-power h2, .news h2 {
+    font-size: 1rem;
+  }
+}
