@@ -1,0 +1,271 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0d1117;
+  color: #c9d1d9;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  margin-bottom: 0.25rem;
+  font-size: 2rem;
+  color: #58a6ff;
+}
+
+.market {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.coin {
+  background: #161b22;
+  border-radius: 1rem;
+  padding: 1rem;
+  width: 200px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.coin img {
+  width: 40px;
+  height: 40px;
+}
+
+.coin .info {
+  margin-top: 0.5rem;
+}
+
+.coin h2 {
+  margin: 0.25rem 0;
+}
+
+.coin p {
+  font-size: 1.25rem;
+  margin: 0.25rem 0;
+}
+
+.coin span {
+  font-size: 0.9rem;
+  color: #8b949e;
+}
+
+.chart,
+.news {
+  background: #161b22;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.chart h2,
+.news h2 {
+  margin-bottom: 1rem;
+  color: #58a6ff;
+}
+
+.placeholder-chart {
+  height: 200px;
+  background: #0d1117;
+  border: 1px dashed #30363d;
+  border-radius: 0.5rem;
+}
+
+.chart-news-wrapper {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+@media (max-width: 1100px) {
+  .chart-news-wrapper {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+.news {
+  background: #161b22;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.news ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.news li {
+  margin-bottom: 0.5rem;
+  color: #adbac7;
+  text-align: left;
+  position: relative;
+  padding-left: 1.2em;
+  min-height: 1.5em;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.news li::before {
+  content: '';
+  display: inline-block;
+  width: 0.5em;
+  height: 0.5em;
+  background: #58a6ff;
+  border-radius: 50%;
+  margin-right: 0.5em;
+  margin-left: 0;
+  align-self: center;
+}
+
+.news a {
+  color: #adbac7;
+  text-decoration: none;
+  word-break: break-word;
+  max-width: 90%;
+  display: inline-block;
+}
+
+@media (max-width: 1100px) {
+  .news {
+    max-width: 100%;
+    margin-left: 0;
+    margin-top: 1rem;
+    text-align: left;
+  }
+  .news ul, .news li {
+    text-align: left;
+  }
+}
+
+.tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.tabs button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: #21262d;
+  color: #c9d1d9;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.tabs button.active {
+  background: #58a6ff;
+  color: #ffffff;
+}
+
+.type-switch {
+  margin-bottom: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-start;
+}
+
+.draw-tools {
+  margin-bottom: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-start;
+}
+
+.draw-tools button {
+  padding: 0.3rem 0.8rem;
+  border: none;
+  background: #21262d;
+  color: #c9d1d9;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-size: 1rem;
+}
+
+.draw-tools button.active {
+  background: #58a6ff;
+  color: #fff;
+}
+
+.lightchart-container {
+  width: 900px;
+  height: 400px;
+  background: #161b22;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  margin: 0 auto 1rem auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.type-switch button.active {
+  background: #3166a7;
+  color: #fff;
+  box-shadow: 0 2px 8px 0 #222b3a99, 0 0 0 2px #58a6ff55;
+}
