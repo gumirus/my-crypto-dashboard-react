@@ -65,7 +65,7 @@ function Chart({ mainCoin, onCoinChange }) {
     }
     chartRef.current = createChart(chartContainerRef.current, {
       width: chartContainerRef.current.offsetWidth,
-      height: 400,
+      height: chartContainerRef.current.offsetHeight,
       layout: {
         background: { color: '#161b22' },
         textColor: '#c9d1d9',
