@@ -6,6 +6,7 @@ import Chart from './components/Chart';
 import News from './components/News';
 import OrderBook from './components/OrderBook';
 import BullBearPower from './components/BullBearPower';
+import SignalBot from './components/SignalBot';
 
 function App() {
   const [mainCoin, setMainCoin] = useState(() => localStorage.getItem('mainCoin') || 'BTCUSDT');
@@ -25,6 +26,7 @@ function App() {
           <Chart mainCoin={mainCoin} onCoinChange={handleCoinChange} />
           <News />
           <BullBearPower symbol={mainCoin} limit={20} />
+          <SignalBot symbol={mainCoin} limit={20} />
         </div>
         <div className="orderbook-sidebar">
           <OrderBook symbol={mainCoin} limit={20} />
