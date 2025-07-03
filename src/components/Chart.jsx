@@ -3,7 +3,6 @@ import { createChart, CrosshairMode } from 'lightweight-charts';
 
 const TIMEFRAMES = [
   { label: '5m', value: '5m' },
-  { label: '10m', value: '10m' },
   { label: '15m', value: '15m' },
   { label: '30m', value: '30m' },
   { label: '1h', value: '1h' },
@@ -39,11 +38,10 @@ const TYPES = [
   { label: 'Бары', value: 'bars' },
 ];
 
-function Chart() {
+function Chart({ mainCoin, onCoinChange }) {
   const chartContainerRef = useRef();
   const chartRef = useRef();
   const seriesRef = useRef();
-  const [mainCoin, setMainCoin] = useState(() => localStorage.getItem('mainCoin') || 'BTCUSDT');
   const [mainChartType, setMainChartType] = useState(() => localStorage.getItem('mainChartType') || 'line');
   const [mainTimeframe, setMainTimeframe] = useState(() => localStorage.getItem('mainTimeframe') || '5m');
   const [loading, setLoading] = useState(false);
@@ -173,7 +171,7 @@ function Chart() {
             <button
               key={coin.value}
               className={mainCoin === coin.value ? 'active' : ''}
-              onClick={() => setMainCoin(coin.value)}
+              onClick={() => onCoinChange(coin.value)}
             >
               {coin.label}
             </button>
@@ -191,7 +189,7 @@ function Chart() {
           ))}
         </div>
       </div>
-      <div className="type-switch">
+      <div className="type-switch timeframes-scroll">
         {TIMEFRAMES.map(tf => (
           <button
             key={tf.value}
@@ -205,7 +203,6 @@ function Chart() {
       <div
         className="lightchart-container"
         ref={chartContainerRef}
-        style={{ width: 900, height: 400 }}
       >
         {loading && (
           <div style={{color:'#58a6ff',textAlign:'center',paddingTop:150,fontSize:'1.2rem',position:'absolute',width:'100%'}}>Загрузка...</div>
