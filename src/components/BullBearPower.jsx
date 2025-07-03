@@ -1,14 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 function BullBearPower({ symbol = 'BTCUSDT', limit = 20 }) {
   const [bull, setBull] = useState(0);
   const [bear, setBear] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const bullHistory = useRef([]);
+  const bearHistory = useRef([]);
+  const HISTORY_LENGTH = 12; // 12 * 5 сек = 1 минута
 
   useEffect(() => {
     setLoading(true);
     setError(false);
+    bullHistory.current = [];
+    bearHistory.current = [];
     let intervalId;
     async function fetchOrderBook() {
       try {
@@ -17,8 +22,16 @@ function BullBearPower({ symbol = 'BTCUSDT', limit = 20 }) {
         const sumBids = data.bids.reduce((acc, [_, qty]) => acc + parseFloat(qty), 0);
         const sumAsks = data.asks.reduce((acc, [_, qty]) => acc + parseFloat(qty), 0);
         const total = sumBids + sumAsks;
-        setBull(total > 0 ? (sumBids / total) * 100 : 50);
-        setBear(total > 0 ? (sumAsks / total) * 100 : 50);
+        const bullVal = total > 0 ? (sumBids / total) * 100 : 50;
+        const bearVal = total > 0 ? (sumAsks / total) * 100 : 50;
+        bullHistory.current.push(bullVal);
+        bearHistory.current.push(bearVal);
+        if (bullHistory.current.length > HISTORY_LENGTH) bullHistory.current.shift();
+        if (bearHistory.current.length > HISTORY_LENGTH) bearHistory.current.shift();
+        const bullAvg = bullHistory.current.reduce((a, b) => a + b, 0) / bullHistory.current.length;
+        const bearAvg = bearHistory.current.reduce((a, b) => a + b, 0) / bearHistory.current.length;
+        setBull(bullAvg);
+        setBear(bearAvg);
       } catch (err) {
         setError(true);
       } finally {
@@ -26,7 +39,7 @@ function BullBearPower({ symbol = 'BTCUSDT', limit = 20 }) {
       }
     }
     fetchOrderBook();
-    intervalId = setInterval(fetchOrderBook, 300000); // 5 минут
+    intervalId = setInterval(fetchOrderBook, 5000); // 5 секунд
     return () => clearInterval(intervalId);
   }, [symbol, limit]);
 
